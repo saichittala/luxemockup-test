@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://snapimg.site
+
+# Sitemaps
+Sitemap: https://snapimg.site/sitemap.xml
