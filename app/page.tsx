@@ -1,128 +1,308 @@
-"use client"; // Required for client-side rendering
+// "use client"; // Required for client-side rendering
+
+// import Image from "next/image";
+// import { useState } from "react";
+// import "./globals.css"; // Ensure styles are imported
+// import Link from 'next/link';
+// import MockupGrid from "./components/mockupgrid";
+// import { useMockups } from "@/context/MockupContext";
+// import EnhancedSeo from "./components/Seo";
+// import type { Metadata } from "next";
+// import { SchemaMarkup } from "./components/SchemaMarkup";
+
+
+
+
+
+// //   export const metadata: Metadata = {
+// //   title: "Free & Premium Design Mockups - High-Quality PSD Templates",
+// //   description: "Download thousands of professional design mockups, PSD templates, and creative resources.",
+// //   openGraph: {
+// //     images: [
+// //       {
+// //         url: "/images/og-homepage.jpg",
+// //         width: 1200,
+// //         height: 630,
+// //       },
+// //     ],
+// //   },
+// // };
+
+// const Home = () => {
+//   const [category, setCategory] = useState("All");
+//   const [tag, setTag] = useState("All");
+//   const [visibleCount, setVisibleCount] = useState(12);
+//   const categories = ["All", "Fashion", "Technology", "Books"];
+//   const [loading, setLoading] = useState(false);
+//     const { mockups } = useMockups();
+//       const homepageSchema = {
+//     "@context": "https://schema.org",
+//     "@type": "WebSite",
+//     "name": "LuxeMockups",
+//     // ... rest of your schema
+//   };
+
+
+
+
+//   const handleLoadMore = () => {
+//     setLoading(true);
+//     setTimeout(() => {
+//       setVisibleCount((prev) => prev + 12);
+//       setLoading(false);
+//     }, 1000); // simulate loading delay (1 second)
+//   };
+
+
+
+
+
+
+//   return (
+//     <div>
+//       <EnhancedSeo
+//         title="Free & Premium Design Mockups - High-Quality PSD Templates"
+//         description="Download thousands of professional design mockups, PSD templates, and creative resources. Free and premium mockups for branding, web design, packaging, and more. Curated by top designers worldwide."
+//         keywords="free mockups, premium mockups, psd mockups, design templates, mockup download, graphic design resources, branding mockups, packaging mockups, web design mockups, mobile app mockups, print design mockups"
+//         canonical="https://luxemockups.com"
+//         ogImage="https://luxemockups.com/images/og-homepage.jpg"
+//         schemaMarkup={homepageSchema}
+//       />
+//       <main>
+//         {/* Hero Section */}
+//         <section className="mb-unset">
+//           <div className="hero-container-main">
+//             <div className="hero-container">
+//               <div>
+//                 <h1 className="heading-h1-text">LuxeMockups</h1>
+//                 <p className="heading-h1-desc">
+//                   All of the finest mockups taken from top creators, all in one place.
+//                 </p>
+//               </div>
+//               <div className="hero-content">
+//                 <p>
+//                   Need Web Design Services?
+//                 </p>
+//                 <Link href="https://saichittala.vercel.app/" className="btn-2">Contact here</Link>
+//               </div>
+//             </div>
+//             {/* <div className="ad-type-1">
+//             </div> */}
+//             <div>
+//               <Link href="/contribute" className="btn-1">Contribute</Link>
+//             </div>
+//           </div>
+
+//         </section>
+//         <div className="bg-main-container">
+//           <div className="filter-container">
+//             <div className="filter-type">
+//               <select className="custom-select" onChange={(e) => setTag(e.target.value)} value={tag}>
+//                 <option value="All">All</option>
+//                 <option value="Free">Free</option>
+//                 <option value="Premium">Premium</option>
+//                 <option value="New">New</option>
+//               </select>
+//             </div>
+//             <div className="filter-category">
+//               {categories.map((cat) => (
+//                 <button
+//                   key={cat}
+//                   className={`btn-1 ${category === cat ? "active" : ""}`}  // Active class toggle
+//                   onClick={() => setCategory(cat)}
+//                 >
+//                   {cat === "Technology" ? "Tech" : cat} {/* Shorten Tech */}
+//                 </button>
+//               ))}
+//             </div>
+
+
+
+//           </div>
+//           <div className="bg-sub-container">
+//               <div className="ad-type-main">
+//                 <div className="ad-type-2">
+//                   {/* <Image src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} /> */}
+//                 </div>
+//                 <div className="ad-type-3">
+//                   {/* <Image src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} /> */}
+//                 </div>
+//               </div>
+//             <div className="card-grid-main">
+//               <MockupGrid category={category} tag={tag} visibleCount={visibleCount} mockups={mockups} />
+//               <div className="load-more btn-1" onClick={handleLoadMore}>
+//                 {loading && (
+//                   <Image
+//                     src="/img/loading.svg"
+//                     alt="Loading"
+//                     width={20}
+//                     height={20}
+//                     className="spin"
+//                   />
+//                 )}
+//                 <p>{loading ? "Loading..." : "Load More"}</p>
+//               </div>
+//               <div className="ad-type-1 ma">
+//               </div>
+//             </div>
+//             <div className="ad-type-main">
+//               <div className="ad-type-2">
+//                 {/* <Image src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} /> */}
+//               </div>
+//               <div className="ad-type-3">
+//                 {/* <Image src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} /> */}
+//               </div>
+//             </div>
+
+//           </div>
+//         </div>
+//       </main>
+//     </div>
+//   );
+// };
+
+// export default Home;
+"use client";
 
 import Image from "next/image";
-import OptionsGrid from "./components/card-grid"; // Use absolute import for clarity
-import "./globals.css"; // Ensure styles are imported
-import Seo from "./components/Seo";
+import { useState } from "react";
+import "./globals.css";
+import Link from "next/link";
+import MockupGrid from "./components/mockupgrid";
+import { useMockups } from "@/context/MockupContext";
+import EnhancedSeo from "./components/Seo";
+import { SchemaMarkup } from "./components/SchemaMarkup";
 
+// Optional: export const metadata...
+
+const AdSlot = ({ src, alt, width, height }: { src: string; alt: string; width: number; height: number }) => (
+  <div className="ad-slot">
+    <Image src={src} alt={alt} width={width} height={height} />
+  </div>
+);
 
 const Home = () => {
+  const [category, setCategory] = useState("All");
+  const [tag, setTag] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(12);
+  const categories = ["All", "Fashion", "Technology", "Books"];
+  const [loading, setLoading] = useState(false);
+  const { mockups } = useMockups();
 
-  const seoConfig = {
-    title: "Free Online Image Compressor & Converter | SnapIMG",
-    description:
-      "Compress and convert images online for free. Reduce image size, convert JPG, PNG, WebP, and maintain high quality. No downloads required! Try SnapIMG now.",
-    canonicalUrl: "https://snapimg.site",
-    keywords: [
-      "free image compressor",
-      "image compression tool",
-      "compress images online",
-      "reduce image size",
-      "convert images online",
-      "JPG to PNG converter",
-      "PNG to WebP conversion",
-      "WebP to JPG tool",
-      "best image converter",
-      "fast image compressor",
-      "online image optimizer",
-      "bulk image compression",
-      "high-quality image compression",
-      "SnapIMG free image tool",
-      "convert images without losing quality",
-      "compress photos without losing quality",
-      "fastest image compressor online",
-      "image resizer and converter"
-    ],
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: "Free Online Image Compressor & Converter | SnapIMG",
-      description:
-        "Compress and convert images online for free. Reduce image size, convert JPG, PNG, WebP, and maintain high quality. No downloads required! Try SnapIMG now.",
-      url: "https://snapimg.site",
-    },
-
-    
+  const homepageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "LuxeMockups",
   };
-  
 
+  const handleLoadMore = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setVisibleCount((prev) => prev + 12);
+      setLoading(false);
+    }, 1000);
+  };
 
   return (
     <div>
-      <Seo {...seoConfig} />
-
+      <EnhancedSeo
+        title="Free & Premium Design Mockups - High-Quality PSD Templates"
+        description="Download thousands of professional design mockups, PSD templates, and creative resources. Free and premium mockups for branding, web design, packaging, and more. Curated by top designers worldwide."
+        keywords="free mockups, premium mockups, psd mockups, design templates, mockup download, graphic design resources, branding mockups, packaging mockups, web design mockups, mobile app mockups, print design mockups"
+        canonical="https://luxemockups.com"
+        ogImage="https://luxemockups.com/images/og-homepage.jpg"
+        schemaMarkup={homepageSchema}
+      />
       <main>
         {/* Hero Section */}
-        <section>
-          <div>
-            <h1>Free Online Image Compression & Conversion Tool</h1>
-            <p className="heading-desc">
-              Compress images and convert JPG, PNG, WebP files easily. No downloads, no quality loss!
-            </p>
-          </div>
-          <OptionsGrid />
-        </section>
-
-        {/* Why Choose SnapIMG */}
-        <div className="bg-white">
-          <section className="common-padding">
-            <h2>Why Choose SnapIMG?</h2>
-            <div className="why-choose-grid">
-              {[
-                { title: "Fast & Free Image Compression", desc: "Reduce file size while maintaining quality." },
-                { title: "Convert Between JPG, PNG, WebP", desc: "Simple and efficient format conversion." },
-                { title: "Secure & Private", desc: "Your images are processed instantly in your browser." },
-                { title: "No Software Required", desc: "Works 100% online, no downloads needed." }
-              ].map((item, index) => (
-                <div className="why-choose-item" key={index}>
-                  <Image className="options-icon" src="/img/correct.svg" alt={item.title} width={50} height={50} />
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+        <section className="mb-unset">
+          <div className="hero-container-main">
+            <div className="hero-container">
+              <div>
+                <h1 className="heading-h1-text">LuxeMockups</h1>
+                <p className="heading-h1-desc">
+                  All of the finest mockups taken from top creators, all in one place.
+                </p>
+              </div>
+              <div className="hero-content">
+                <p>Need Web Design Services?</p>
+                <Link href="https://saichittala.vercel.app/" className="btn-2">
+                  Contact here
+                </Link>
+              </div>
             </div>
-          </section>
-        </div>
-
-        {/* How to Use SnapIMG */}
-        <section className="common-padding">
-          <div className="how-to-use-container">
-            <h2>How to Use SnapIMG?</h2>
-            <div className="how-to-use-grid">
-              {[
-                { title: "Upload Image", desc: "Choose your JPG, PNG, or WebP file to compress or convert.", img: "/img/how-upload.svg" },
-                { title: "Compress or Convert", desc: "Select the desired action to optimize your image.", img: "/img/how-compress.svg" },
-                { title: "Download Image", desc: "Get your optimized image instantly.", img: "/img/how-download.svg" }
-              ].map((item, index) => (
-                <div className="how-to-use-item" key={index}>
-                  <Image className="options-icon" src={item.img} alt={item.title} width={50} height={50} />
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+            <div>
+              <Link href="/contribute" className="btn-1">Contribute</Link>
             </div>
           </div>
         </section>
 
-        {/* Conversion & Compression Info */}
-        <div className="bg-gradient">
-          <section className="common-padding">
-            <div className="readable-grid-container">
-              {[
-                { title: "Convert Image Formats Easily", desc: "Convert JPG to PNG, PNG to JPG, JPG to WebP, or PNG to WebP in just a few clicks. SnapIMG supports bulk conversion and ensures high-quality results." },
-                { title: "Compress Images Online for Free", desc: "SnapIMG allows you to compress images online without losing quality. Whether you need to reduce the size of JPG, PNG, or WebP files, our tool ensures fast compression." }
-              ].map((item, index) => (
-                <div className="readable-container" key={index}>
-                  <h2 className="readable-heading">{item.title}</h2>
-                  <p className="readable-text">{item.desc}</p>
-                </div>
+        <div className="bg-main-container">
+          <div className="filter-container">
+            <div className="filter-type">
+              <select className="custom-select" onChange={(e) => setTag(e.target.value)} value={tag}>
+                <option value="All">All</option>
+                <option value="Free">Free</option>
+                <option value="Premium">Premium</option>
+                <option value="New">New</option>
+              </select>
+            </div>
+            <div className="filter-category">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`btn-1 ${category === cat ? "active" : ""}`}
+                  onClick={() => setCategory(cat)}
+                >
+                  {cat === "Technology" ? "Tech" : cat}
+                </button>
               ))}
             </div>
-          </section>
+          </div>
+
+          <div className="bg-sub-container">
+            {/* First Ad Block */}
+            <div className="ad-type-main">
+              <div className="ad-type-2">
+                <AdSlot src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} />
+              </div>
+              <div className="ad-type-3">
+                <AdSlot src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} />
+              </div>
+            </div>
+
+            {/* Main Content + Load More */}
+            <div className="card-grid-main">
+              <MockupGrid category={category} tag={tag} visibleCount={visibleCount} mockups={mockups} />
+              <div className="load-more btn-1" onClick={handleLoadMore}>
+                {loading && (
+                  <Image
+                    src="/img/loading.svg"
+                    alt="Loading"
+                    width={20}
+                    height={20}
+                    className="spin"
+                  />
+                )}
+                <p>{loading ? "Loading..." : "Load More"}</p>
+              </div>
+
+              {/* Mid-page Ad */}
+              <div className="ad-type-1 ma">
+                <AdSlot src="/img/ad-type-3.png" alt="Ad Type 3" width={728} height={90} />
+              </div>
+            </div>
+
+            {/* Bottom Ad Block */}
+            <div className="ad-type-main">
+              <div className="ad-type-2">
+                <AdSlot src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} />
+              </div>
+              <div className="ad-type-3">
+                <AdSlot src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} />
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
@@ -130,3 +310,4 @@ const Home = () => {
 };
 
 export default Home;
+

@@ -3,28 +3,25 @@ import LayoutWrapper from "./components/LayoutWrapper";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SnapIMG - Free Online Image Compression & Conversion",
-  description: "Compress images and convert JPG, PNG, WebP files easily. No downloads, no quality loss!",
+  title: "LuxeMockups - Premium Design Mockups",
+  description: "Download high-quality free and premium design mockups for your creative projects",
+  metadataBase: new URL("https://luxemockups.com"),
   openGraph: {
-    title: "SnapIMG - Free Online Image Compression & Conversion",
-    description: "Compress images and convert JPG, PNG, WebP files easily. No downloads, no quality loss!",
-    url: "https://snapimg.site",
-    siteName: "SnapIMG",
+    title: "LuxeMockups - Premium Design Mockups",
+    description: "Download high-quality free and premium design mockups for your creative projects",
     images: [
       {
-        url: "/img/og-image.jpg", // Ensure this path is correct
+        url: "/images/og-default.jpg",
         width: 1200,
         height: 630,
-        alt: "SnapIMG - Free Online Image Compression & Conversion",
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SnapIMG - Free Online Image Compression & Conversion",
-    description: "Compress images and convert JPG, PNG, WebP files easily. No downloads, no quality loss!",
-    images: ["/img/og-image.jpg"], // Ensure the correct path
+    title: "LuxeMockups - Premium Design Mockups",
+    description: "Download high-quality free and premium design mockups for your creative projects",
+    images: ["/images/og-default.jpg"],
   },
 };
 
@@ -36,12 +33,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8420729734991072"
           crossOrigin="anonymous"
-        ></script>
+        />
       </head>
       <body className="global-container">
         <LayoutWrapper>{children}</LayoutWrapper>
       </body>
-
     </html>
   );
 }

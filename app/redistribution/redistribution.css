@@ -1,0 +1,34 @@
+
+.hero-container-main {
+  display: flex;
+  width: var(--width);
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding-bottom: 36px;
+  border-bottom: none !important;
+}
+
+.hero-container {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.heading-h1-text {
+  font-size: 18px !important;
+    color: #2b2c2d !important;
+}
+
+.hero-content p {
+    color: #656565;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: -.42px;
+    text-align: left;
+}

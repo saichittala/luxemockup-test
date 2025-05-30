@@ -35,7 +35,7 @@
     "app/convertjpg/page.jsx",
     "next-env.d.ts",
     "dist/types/**/*.ts"
-, "app/compressimages/page.jsx"  ],
+, "app/compressimages/page.jsx", "app/mockups/page.jsx", "app/components/mockupgrid.tsx"  ],
   "exclude": [
     "node_modules"
   ]
