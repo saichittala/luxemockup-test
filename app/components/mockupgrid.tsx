@@ -43,10 +43,10 @@ const MockupGrid = ({
 
   return (
     <div className="card-grid">
-      {visibleMockups.map((mockup) => (
+      {visibleMockups.map((mockup, index) => (
         <Link
           href={`/mockups/${mockup.slug}`}
-          key={mockup.slug}
+          key={`${mockup.slug}-${index}`}
           className="card-grid-item"
           title={mockup.title}
         >

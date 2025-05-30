@@ -31,15 +31,21 @@ export default function Dashboard() {
     const handleInputChange = (field: keyof Mockup, value: string) => {
         setFormData(prev => ({
             ...prev,
-            [field]: field === 'fileTypes' ? value.split(',').map(s => s.trim()) : value
+            [field]: field === 'fileTypes'
+                ? value.split(',').map(s => s.trim())
+                : value
         }));
+
+        if (field === 'image') {
+            setImagePreview('');
+        }
     };
 
-    useEffect(() => {
-        if (!loading && editingSlug === null) {
-            resetForm();
-        }
-    }, [mockups, loading]);
+useEffect(() => {
+  if (!loading && !editingSlug) {
+    resetForm();
+  }
+}, [mockups, loading, editingSlug]);
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];

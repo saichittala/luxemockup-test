@@ -18,7 +18,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   const normalizedPath = pathname.replace(/\/+$/, "") || "/";
 
-  const hiddenheaderRoutes = ["/login", "/signup", "/dashboard", "/404"];
+  const hiddenheaderRoutes = ["/signup", "/404"];
   const hiddenfooterRoutes = [
     "/convertpng",
     "/convertjpg",

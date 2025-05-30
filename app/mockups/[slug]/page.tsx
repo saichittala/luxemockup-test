@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import mockups from "@/data/mockups";
 
 interface Mockup {
@@ -15,17 +15,28 @@ interface Mockup {
   tag: string;
 }
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
+// Remove custom PageProps and use inline types instead
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const mockup = mockups.find((m) => m.slug === params.slug);
-  
   return {
-    title: `${mockup?.title || 'Mockup'} | Your Site Name`,
+    title: `${mockup?.title || 'Mockup'} | LuxeMockups`,
+    keywords: mockup?.fileTypes.join(", ") || "mockup, design, free",
+    authors: [{ name: "LuxeMockups Team", url: "https://luxemockups.com" }],
+    creator: "LuxeMockups Team",
+    publisher: "LuxeMockups",
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      noimageindex: false,
+      noarchive: false,
+      nosnippet: false,
+    },
     description: mockup?.details,
     openGraph: {
       images: [mockup?.image || '/default-image.jpg'],
@@ -33,7 +44,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const MockupPage = async ({ params }: Props) => {
+export default async function MockupPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const mockup = mockups.find((m) => m.slug === params.slug);
 
   if (!mockup) {
@@ -106,9 +121,7 @@ const MockupPage = async ({ params }: Props) => {
       </div>
     </div>
   );
-};
-
-export default MockupPage;
+}
 
 export async function generateStaticParams() {
   return mockups.map((mockup) => ({

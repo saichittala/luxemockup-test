@@ -185,7 +185,7 @@ const Home = () => {
   const [category, setCategory] = useState("All");
   const [tag, setTag] = useState("All");
   const [visibleCount, setVisibleCount] = useState(12);
-  const categories = ["All", "Fashion", "Technology", "Books"];
+  const categories = ["All", "Fashion", "Technology", "Books", "Food & Drink"];
   const [loading, setLoading] = useState(false);
   const { mockups } = useMockups();
 
@@ -264,10 +264,10 @@ const Home = () => {
             {/* First Ad Block */}
             <div className="ad-type-main">
               <div className="ad-type-2">
-                <AdSlot src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} />
+                {/* <AdSlot src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} /> */}
               </div>
               <div className="ad-type-3">
-                <AdSlot src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} />
+                {/* <AdSlot src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} /> */}
               </div>
             </div>
 
@@ -289,17 +289,17 @@ const Home = () => {
 
               {/* Mid-page Ad */}
               <div className="ad-type-1 ma">
-                <AdSlot src="/img/ad-type-3.png" alt="Ad Type 3" width={728} height={90} />
+                {/* <AdSlot src="/img/ad-type-3.png" alt="Ad Type 3" width={728} height={90} /> */}
               </div>
             </div>
 
             {/* Bottom Ad Block */}
             <div className="ad-type-main">
               <div className="ad-type-2">
-                <AdSlot src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} />
+                {/* <AdSlot src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} /> */}
               </div>
               <div className="ad-type-3">
-                <AdSlot src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} />
+                {/* <AdSlot src="/img/ad-type-2.png" alt="Ad Type 2" width={300} height={250} /> */}
               </div>
             </div>
           </div>

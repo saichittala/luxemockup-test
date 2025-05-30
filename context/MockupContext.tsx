@@ -25,32 +25,23 @@ export function MockupProvider({ children }: { children: React.ReactNode }) {
     setLoading(false);
   }, []);
 
-  const addMockup = (mockup: Mockup) => {
-    setLoading(true);
-    const updatedMockups = [...mockups, mockup];
-    setMockups(updatedMockups);
-    saveMockups(updatedMockups);
-    setLoading(false);
-  };
+const addMockup = (mockup: Mockup) => {
+  const updatedMockups = [...mockups, mockup];
+  setMockups(updatedMockups);
+  saveMockups(updatedMockups);
+};
 
-  const updateMockup = (slug: string, mockup: Mockup) => {
-    setLoading(true);
-    const updatedMockups = mockups.map(m => 
-      m.slug === slug ? mockup : m
-    );
-    setMockups(updatedMockups);
-    saveMockups(updatedMockups);
-    setLoading(false);
-  };
+const updateMockup = (slug: string, mockup: Mockup) => {
+  const updatedMockups = mockups.map(m => m.slug === slug ? mockup : m);
+  setMockups(updatedMockups);
+  saveMockups(updatedMockups);
+};
 
-  const deleteMockup = (slug: string) => {
-    setLoading(true);
-    const updatedMockups = mockups.filter(m => m.slug !== slug);
-    setMockups(updatedMockups);
-    saveMockups(updatedMockups);
-    setLoading(false);
-  };
-
+const deleteMockup = (slug: string) => {
+  const updatedMockups = mockups.filter(m => m.slug !== slug);
+  setMockups(updatedMockups);
+  saveMockups(updatedMockups);
+};
   return (
     <MockupContext.Provider value={{ 
       mockups, 

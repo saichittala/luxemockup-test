@@ -18,13 +18,23 @@ const STORAGE_KEY = 'mockups_app_data';
 
 const initialMockups: Mockup[] = [
   {
-    title: "Open Book Mockup On Chair Mockup ",
+    title: "Open Book Mockup On Chair Mockup",
     fileTypes: ["PSD", "JPG"],
     image: "/img/mockups/books/Open-Book-Mockup-On-Chair-Mockup.webp",
     tag: "Free",
     downloadlink: "https://creatoom.com/shop/open-book-mockup-on-velvet-chair-v4-isometric/",
     category: "Books",
     slug: "book-cover-1",
+    details: "A realistic mockup of a perfume bottle, perfect for showcasing your fragrance designs."
+  },
+  {
+    title: "Open Book Mockup On Chair Mockup--2 ",
+    fileTypes: ["PSD", "JPG"],
+    image: "/img/mockups/books/Open-Book-Mockup-On-Chair-Mockup.webp",
+    tag: "Free",
+    downloadlink: "https://creatoom.com/shop/open-book-mockup-on-velvet-chair-v4-isometric/",
+    category: "Books",
+    slug: "book-cover-sample-2",
     details: "A realistic mockup of a perfume bottle, perfect for showcasing your fragrance designs."
   },
   {
@@ -145,15 +155,6 @@ const initialMockups: Mockup[] = [
     details: "A realistic mockup of a perfume bottle, perfect for showcasing your fragrance designs."
 
   },
-
-  // ...Array(20).fill(null).map((_, i) => ({
-  //   title: `Sneaker Ad Mockup #${i + 1}`,
-  //   fileTypes: ["PSD"],
-  //   image: "/img/sample.png",
-  //   tag: "Free",
-  //   category: "Fashion",
-  //   link: `/mockups/sneaker-${i + 1}`
-  // }))
 ];
 
 // Optimized storage functions
