@@ -11,7 +11,6 @@ const nextConfig: NextConfig = {
   },
     trailingSlash: true,
   // Optional: set dynamicParams to false to prevent missing param errors
-  dynamicParams: false
 };
 
 export default nextConfig;

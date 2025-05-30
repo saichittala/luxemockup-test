@@ -1,48 +1,67 @@
 import Image from "next/image";
 import Link from "next/link";
-// Make sure the file exists at this path, or update the path if needed
+import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import mockups from "@/data/mockups";
-// app/mockups/[slug]/page.tsx
 
-interface PageProps {
+interface Mockup {
+  slug: string;
+  title: string;
+  image: string;
+  details: string;
+  downloadlink: string;
+  category: string;
+  fileTypes: string[];
+  tag: string;
+}
+
+type Props = {
   params: {
     slug: string;
   };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const mockup = mockups.find((m) => m.slug === params.slug);
+  
+  return {
+    title: `${mockup?.title || 'Mockup'} | Your Site Name`,
+    description: mockup?.details,
+    openGraph: {
+      images: [mockup?.image || '/default-image.jpg'],
+    },
+  };
 }
 
-const MockupPage = ({ params }: PageProps) => {
+const MockupPage = async ({ params }: Props) => {
   const mockup = mockups.find((m) => m.slug === params.slug);
 
   if (!mockup) {
-    return (
-      <div className="mockup-detail">
-        <Link href="/">← Back</Link>
-        <p>Mockup not found 😢</p>
-      </div>
-    );
+    notFound();
   }
 
   return (
     <div className="mockup-detail">
       <div className="breadcrumbs">
-        <a href="/">Home</a>
-        <a >/</a>
-        <a href="/">Mockups</a>
-        <a>/</a>
-        <a className="breadcrumbs-active">{mockup.title}</a>
+        <Link href="/">Home</Link>
+        <span>/</span>
+        <Link href="/mockups">Mockups</Link>
+        <span>/</span>
+        <span className="breadcrumbs-active">{mockup.title}</span>
       </div>
+      
       <div>
         <h1 className="heading-h1-mockupdetails">{mockup.title}</h1>
-
-        {/* <Link className="btn-1" href="/">← Back</Link> */}
+        
         <div className="mockup-detail-contentwad">
-          <div >
+          <div>
             <div>
               <Image
                 src={mockup.image}
                 alt={mockup.title}
                 width={600}
                 height={600}
+                sizes="(max-width: 768px) 100vw, 600px"
                 priority
               />
             </div>
@@ -52,21 +71,23 @@ const MockupPage = ({ params }: PageProps) => {
                 <p className="mu-details-content">{mockup.details}</p>
               </div>
               <div className="d-flex">
-                <Link href={mockup.downloadlink} className="btn-1 download-btn" target="_blank">
+                <Link 
+                  href={mockup.downloadlink} 
+                  className="btn-1 download-btn" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Download Mockup
                 </Link>
               </div>
             </div>
-
           </div>
-          {/* <div className="border-line">
-
-          </div> */}
+          
           <div className="ad-type-main">
             <div className="ad-type-2">
-              {/* <Image src="/img/ad-type-1.png" alt="Ad Type 1" width={300} height={600} /> */}
+              {/* Ad space */}
             </div>
-            <div className="mockup-detail-content-main-2 ">
+            <div className="mockup-detail-content-main-2">
               <div>
                 <p className="mu-details-heading">Category</p>
                 <p className="mu-details-content">{mockup.category}</p>
@@ -83,16 +104,11 @@ const MockupPage = ({ params }: PageProps) => {
           </div>
         </div>
       </div>
-
-
-
     </div>
   );
 };
 
 export default MockupPage;
-
-
 
 export async function generateStaticParams() {
   return mockups.map((mockup) => ({
