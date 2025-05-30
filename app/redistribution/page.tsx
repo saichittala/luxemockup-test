@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import './about-us.css'; // Ensure styles are imported
+import './redistribution.css'; // Ensure styles are imported
 
 export default function contribution() {
   return (
