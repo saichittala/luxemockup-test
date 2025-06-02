@@ -2,12 +2,12 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import './privacy-policy.css'; // Ensure styles are imported
+import './contact-us.css'; // Ensure styles are imported
 
 export default function contactus() {
   return (
     <section className="mb-unset">
-      <div className="hero-container-main">
+      <div className="hero-container-main-contact">
         <div className="hero-container">
           <div>
             <h1 className="heading-h1-text">📬 Contact Us
@@ -32,7 +32,7 @@ export default function contactus() {
           </div>
           <div className="hero-content">
             <p>
-              📧 hello@luxemockups.com
+              📧 luxemockups@gmail.com
 
             </p>
 
@@ -45,7 +45,7 @@ export default function contactus() {
           </div>
           <div className="hero-content">
             <p>
-              📧 collab@luxemockups.com
+              📧 luxemockups@gmail.com
             </p>
           </div>
         </div>

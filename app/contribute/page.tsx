@@ -7,7 +7,7 @@ import './contribute.css'; // Ensure styles are imported
 export default function contribution() {
   return (
     <section className="mb-unset">
-      <div className="hero-container-main">
+      <div className="hero-container-main-contribute">
         <div className="hero-container">
           <div>
             <h1 className="heading-h1-text">Contribute</h1>

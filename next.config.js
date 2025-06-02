@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",   images: { unoptimized: true }, // Required for static export
-    trailingSlash: true,
-  // Optional: set dynamicParams to false to prevent missing param errors
+  images: {
+    domains: ['luxe-backend-8jiz.onrender.com', 'localhost'],
+  },
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;

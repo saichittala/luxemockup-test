@@ -1,58 +1,53 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from 'next/navigation';
-import { type Metadata } from 'next';
-import mockups from "@/data/mockups";
+import { getMockups } from '@/data/mockups';
+import React, { useEffect, useState } from "react";
 
-interface Mockup {
-  slug: string;
-  title: string;
-  image: string;
-  details: string;
-  downloadlink: string;
-  category: string;
-  fileTypes: string[];
-  tag: string;
-}
+const STRAPI_URL =
+  process.env.NODE_ENV === "development"
+    ? "https://luxe-backend-8jiz.onrender.com"
+    : "http://localhost:1337";
 
-// Remove custom PageProps and use inline types instead
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const mockup = mockups.find((m) => m.slug === params.slug);
-  return {
-    title: `${mockup?.title || 'Mockup'} | LuxeMockups`,
-    keywords: mockup?.fileTypes.join(", ") || "mockup, design, free",
-    authors: [{ name: "LuxeMockups Team", url: "https://luxemockups.com" }],
-    creator: "LuxeMockups Team",
-    publisher: "LuxeMockups",
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      noimageindex: false,
-      noarchive: false,
-      nosnippet: false,
-    },
-    description: mockup?.details,
-    openGraph: {
-      images: [mockup?.image || '/default-image.jpg'],
-    },
-  };
-}
+const getImageUrl = (image: any): string => {
 
-export default async function MockupPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const mockup = mockups.find((m) => m.slug === params.slug);
+  // Case 1: Image is already a full URL string
+  if (typeof image === 'string') {
+    if (image.startsWith('http')) return image;
+    if (image.startsWith('/')) return `${STRAPI_URL}${image}`;
+    return `${STRAPI_URL}/${image}`;
+  }
+
+  // Case 2: Strapi v4 response structure (from API)
+  if (image?.attributes?.url) {
+    const url = image.attributes.url;
+    return `${STRAPI_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+  }
+
+  // Case 3: Alternative structure (direct url property)
+  if (image?.url) {
+    const url = image.url;
+    return `${STRAPI_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+  }
+
+  // Case 4: Fallback image
+  return '/img/sample.png';
+};
+export default function MockupPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = React.use(params); // <-- Unwrap the params Promise
+  const [mockup, setMockup] = useState<any>(null);
+
+  useEffect(() => {
+    getMockups().then((mockups) => {
+      const found = mockups.find((m: any) => m.slug === slug);
+      setMockup(found);
+    });
+  }, [slug]);
 
   if (!mockup) {
-    notFound();
+    return <div>Mockup not found</div>;
   }
 
   return (
@@ -64,15 +59,13 @@ export default async function MockupPage({
         <span>/</span>
         <span className="breadcrumbs-active">{mockup.title}</span>
       </div>
-      
       <div>
         <h1 className="heading-h1-mockupdetails">{mockup.title}</h1>
-        
         <div className="mockup-detail-contentwad">
-          <div>
+          <div className="width-100">
             <div>
               <Image
-                src={mockup.image}
+                src={getImageUrl(mockup.image)}
                 alt={mockup.title}
                 width={600}
                 height={600}
@@ -82,13 +75,13 @@ export default async function MockupPage({
             </div>
             <div className="mockup-detail-content-main">
               <div>
-                <p className="mu-details-heading">Details:</p>
+                <p className="mu-details-heading">Details</p>
                 <p className="mu-details-content">{mockup.details}</p>
               </div>
               <div className="d-flex">
-                <Link 
-                  href={mockup.downloadlink} 
-                  className="btn-1 download-btn" 
+                <Link
+                  href={mockup.downloadlink}
+                  className="btn-1 download-btn"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -97,11 +90,8 @@ export default async function MockupPage({
               </div>
             </div>
           </div>
-          
           <div className="ad-type-main">
-            <div className="ad-type-2">
-              {/* Ad space */}
-            </div>
+            <div className="ad-type-2">{/* Ad space */}</div>
             <div className="mockup-detail-content-main-2">
               <div>
                 <p className="mu-details-heading">Category</p>
@@ -109,7 +99,11 @@ export default async function MockupPage({
               </div>
               <div>
                 <p className="mu-details-heading">File Type</p>
-                <p className="mu-details-content">{mockup.fileTypes.join(", ")}</p>
+                <p className="mu-details-content">
+                  {Array.isArray(mockup.fileTypes)
+                    ? mockup.fileTypes.join(", ")
+                    : mockup.fileTypes || ""}
+                </p>
               </div>
               <div>
                 <p className="mu-details-heading">Tag</p>
@@ -121,10 +115,4 @@ export default async function MockupPage({
       </div>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  return mockups.map((mockup) => ({
-    slug: mockup.slug,
-  }));
 }

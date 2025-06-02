@@ -7,7 +7,7 @@ import './privacy-policy.css'; // Ensure styles are imported
 export default function privacypolicy() {
   return (
     <section className="mb-unset">
-      <div className="hero-container-main">
+      <div className="hero-container-main-privacy">
         <div className="hero-container">
           <div>
             <h1 className="heading-h1-text">Privacy Policy</h1>

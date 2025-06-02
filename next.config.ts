@@ -4,7 +4,6 @@ import { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // basePath: isProd ? '/next-js-snap-test' : '',
-  output: 'export', // This replaces 'next export'
   distDir: 'dist',
   images: {
     unoptimized: true,

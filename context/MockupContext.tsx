@@ -17,13 +17,17 @@ export function MockupProvider({ children }: { children: React.ReactNode }) {
   const [mockups, setMockups] = useState<Mockup[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Load mockups on component mount
+ useEffect(() => {
+  const fetchMockups = async () => {
     setLoading(true);
-    const loadedMockups = getMockups();
+    const loadedMockups = await getMockups();
     setMockups(loadedMockups);
     setLoading(false);
-  }, []);
+  };
+
+  fetchMockups(); // call the async function
+}, []);
+
 
 const addMockup = (mockup: Mockup) => {
   const updatedMockups = [...mockups, mockup];

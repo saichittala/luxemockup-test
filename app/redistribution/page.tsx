@@ -4,10 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import './redistribution.css'; // Ensure styles are imported
 
-export default function contribution() {
+export default function Redistribution() {
   return (
     <section className="mb-unset">
-      <div className="hero-container-main">
+      <div className="hero-container-main-redistribution">
         <div className="hero-container">
           <div>
             <h1 className="heading-h1-text">Redistribution</h1>
