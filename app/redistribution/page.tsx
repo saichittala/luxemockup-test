@@ -16,16 +16,16 @@ export default function Redistribution() {
 
             </p>
             <p>
-              We’re happy to see our design resource features shared and appreciated across the web! If you choose to share any mockup, font, or graphic listed on LuxeMockups, please always link directly to the resource’s page on our site — not to the file itself.
+              We are happy to see our design resource features shared and appreciated across the web! If you choose to share any mockup, font, or graphic listed on LuxeMockups, please always link directly to the resource’s page on our site — not to the file itself.
 
             </p>
             <p>
-              Direct linking to download files is not allowed unless you’ve received our written permission.
+              Direct linking to download files is not allowed unless you have received our written permission.
 
 
             </p>
             <p>
-              Let’s support creators by giving proper credit and keeping the design community strong and respectful!
+              Let us support creators by giving proper credit and keeping the design community strong and respectful!
 
 
 

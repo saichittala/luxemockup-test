@@ -29,15 +29,15 @@ export default function privacypolicy() {
 
             </p>
             <p>
-              Cookies – small data files stored on your device. Learn more at allaboutcookies.org.
+              Cookies  small data files stored on your device. Learn more at allaboutcookies.org.
 
             </p>
             <p>
-              Log Files – track actions on the site and collect your IP, browser, ISP, and timestamps.
+              Log Files track actions on the site and collect your IP, browser, ISP, and timestamps.
 
             </p>
             <p>
-              Web Beacons / Tags / Pixels – digital tools used to analyze how you navigate the site.
+              Web Beacons / Tags / Pixels digital tools used to analyze how you navigate the site.
 
             </p>
           </div>
