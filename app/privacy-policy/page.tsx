@@ -1,7 +1,5 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
 import './privacy-policy.css'; // Ensure styles are imported
 
 export default function privacypolicy() {

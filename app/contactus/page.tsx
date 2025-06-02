@@ -1,7 +1,5 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
 import './contact-us.css'; // Ensure styles are imported
 
 export default function contactus() {

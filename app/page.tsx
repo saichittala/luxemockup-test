@@ -8,7 +8,6 @@ import Link from "next/link";
 import MockupGrid from "./components/mockupgrid";
 import { useMockups } from "@/context/MockupContext";
 import EnhancedSeo from "./components/Seo";
-import { SchemaMarkup } from "./components/SchemaMarkup";
 
 
 // Optional: export const metadata...
